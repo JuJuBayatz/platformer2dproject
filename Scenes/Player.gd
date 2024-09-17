@@ -3,6 +3,8 @@ extends CharacterBody2D
 var move_speed: float = 100.0
 var jump_force: float = 200.0
 var gravity: float = 500.0
+var score: int = 0
+@onready var score_text: Label = get_node("CanvasLayer/ScoreText")
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -10,7 +12,6 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = 0
 	if Input.is_key_pressed(KEY_LEFT):
-		print("left")
 		velocity.x -= move_speed
 	if Input.is_key_pressed(KEY_RIGHT):
 		velocity.x += move_speed
@@ -25,3 +26,7 @@ func _physics_process(delta: float) -> void:
 
 func game_over():
 	get_tree().reload_current_scene()
+
+func add_score(amount):
+	score += amount
+	score_text.text = "Score: %s" % score

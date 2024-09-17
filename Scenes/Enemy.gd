@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_position = global_position.move_toward(target_position, move_speed * delta)
-	print("start_position: %v" % start_position )
+
 	if global_position == target_position:
 		target_position = start_position 
 
